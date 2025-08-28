@@ -188,6 +188,98 @@
             backdrop-filter: blur(10px);
         }
 
+        /* Marketing Diary */
+        .marketing-diary {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .diary-timeline {
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .diary-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #FFD700, #4ECDC4);
+        }
+
+        .diary-entry {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0 30px 80px;
+            border-left: 4px solid #FFD700;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .diary-entry::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: #FFD700;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .diary-entry.ongoing {
+            border-left-color: #4ECDC4;
+            animation: pulse 2s infinite;
+        }
+
+        .diary-entry.ongoing::before {
+            background: #4ECDC4;
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                background: rgba(255, 255, 255, 0.1);
+                transform: scale(1);
+            }
+            50% { 
+                background: rgba(78, 205, 196, 0.1);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 5px #4ECDC4;
+            }
+            50% { 
+                box-shadow: 0 0 15px #4ECDC4, 0 0 25px #4ECDC4;
+            }
+        }
+
+        .diary-entry h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .diary-entry.ongoing h3 {
+            color: #4ECDC4;
+        }
+
+        .diary-entry p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .diary-entry strong {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
         /* Roadmap */
         .roadmap {
             padding: 80px 0;
@@ -267,6 +359,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#diary">Marketing Diary</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
             </ul>
         </nav>
@@ -275,7 +368,6 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="coin-icon">
-                <!-- Replace 'your-coin-image.png' with the path to your uploaded coin image -->
                 <img src="later.png" alt="LATER Coin - I'll Buy It Tomorrow" />
             </div>
             <h1>PROCRASTINATION COIN</h1>
@@ -333,6 +425,51 @@
                     <h3>Marketing</h3>
                     <p style="font-size: 1.5rem; color: #A8E6CF;">20%</p>
                     <small>We'll start marketing... eventually</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="marketing-diary" id="diary">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 20px;">📔 Marketing Diary</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.8; margin-bottom: 40px;">Live updates from our incredibly lazy marketing journey</p>
+            
+            <div class="diary-timeline">
+                <div class="diary-entry">
+                    <h3>🤖 This Morning: "AI, Write My Promo"</h3>
+                    <p><strong>What happened:</strong> Was too lazy to write my own coin promotion, so I asked AI to do it. Realized this was PERFECT for a procrastination coin.</p>
+                    <p><strong>Results:</strong> Created the most authentic marketing message ever: "This was written by AI because I was too lazy..."</p>
+                    <p><strong>Lesson:</strong> Sometimes being lazy IS the marketing strategy.</p>
+                </div>
+                
+                <div class="diary-entry">
+                    <h3>🎮 Afternoon: "Twitch Spam Adventure"</h3>
+                    <p><strong>What happened:</strong> Spammed Twitch chats with LATER coin messages. Got completely ignored.</p>
+                    <p><strong>Results:</strong> Zero engagement, but very fitting for a procrastination coin.</p>
+                    <p><strong>Thoughts:</strong> Maybe getting ignored is the real success here? 🤔</p>
+                </div>
+                
+                <div class="diary-entry">
+                    <h3>📱 Earlier Today: "TikTok DM Hustle"</h3>
+                    <p><strong>What happened:</strong> Sent messages to crypto TikTokers. Now waiting for responses...</p>
+                    <p><strong>Results:</strong> TBD (probably tomorrow)</p>
+                    <p><strong>Current mood:</strong> Optimistically procrastinating 😴</p>
+                </div>
+                
+                <div class="diary-entry">
+                    <h3>💡 Just Now: "The Meta Moment"</h3>
+                    <p><strong>What happened:</strong> Realized we should document this whole chaotic journey on the website itself.</p>
+                    <p><strong>Results:</strong> This diary section was born!</p>
+                    <p><strong>Genius level:</strong> Accidentally turned lazy marketing into authentic content marketing 🧠</p>
+                </div>
+                
+                <div class="diary-entry ongoing">
+                    <h3>⏳ Right Now: "Still Procrastinating..."</h3>
+                    <p><strong>Status:</strong> Waiting for TikTok responses, considering Telegram groups, definitely putting off "real" marketing</p>
+                    <p><strong>Next steps:</strong> Maybe try Reddit? Or just wait and see what happens? 🤷</p>
+                    <p><strong>Today's achievement:</strong> Perfectly captured the LATER coin energy in one chaotic day</p>
+                    <p><em style="opacity: 0.7; font-size: 0.9rem;">*This diary updates whenever we remember to update it... so probably not that often 😅</em></p>
                 </div>
             </div>
         </div>
@@ -418,7 +555,7 @@
         }
         
         function socialProcrastinate(platform) {
-            alert("I'll definitely follow on ${platform}... right after I finish scrolling through my current feed! But if'you really want, here's the official address 3E27Fb5agVZSwFBNvJjQWgXt7GwFLLjm6PQrxt6npump");
+            alert(`I'll definitely follow on ${platform}... right after I finish scrolling through my current feed!`);
         }
         
         // Lazy loading simulation
