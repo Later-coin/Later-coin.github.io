@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LATER Coin - I'll Buy It Tomorrow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .coin-icon {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coin-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* Tokenomics */
+        .tokenomics {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .tokenomics-item {
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Marketing Diary */
+        .marketing-diary {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .diary-timeline {
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .diary-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #FFD700, #4ECDC4);
+        }
+
+        .diary-entry {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0 30px 80px;
+            border-left: 4px solid #FFD700;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .diary-entry::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: #FFD700;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .diary-entry.ongoing {
+            border-left-color: #4ECDC4;
+            animation: pulse 2s infinite;
+        }
+
+        .diary-entry.ongoing::before {
+            background: #4ECDC4;
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                background: rgba(255, 255, 255, 0.1);
+                transform: scale(1);
+            }
+            50% { 
+                background: rgba(78, 205, 196, 0.1);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 5px #4ECDC4;
+            }
+            50% { 
+                box-shadow: 0 0 15px #4ECDC4, 0 0 25px #4ECDC4;
+            }
+        }
+
+        .diary-entry h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .diary-entry.ongoing h3 {
+            color: #4ECDC4;
+        }
+
+        .diary-entry p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .diary-entry strong {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Roadmap */
+        .roadmap {
+            padding: 80px 0;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .roadmap-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 4px solid #FFD700;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .lazy-counter {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            z-index: 50;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .nav-links { display: none; }
+            .lazy-counter { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Lazy Counter -->
+    <div class="lazy-counter">
+        <div>⏰</div>
+        <div>Tasks postponed:</div>
+        <div id="counter">0</div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">LATER 💤</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#diary">Marketing Diary</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="coin-icon">
+                <img src="later.png" alt="LATER Coin - I'll Buy It Tomorrow" />
+            </div>
+            <h1>PROCRASTINATION COIN</h1>
+            <p>"I'll buy it tomorrow" - The crypto for people who always have better things to do... later<br>3E27Fb5agVZSwFBNvJjQWgXt7GwFLLjm6PQrxt6npump</p>
+            <a href="#" class="cta-button" onclick="procrastinate()">Buy Now (Maybe Tomorrow)</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 20px;">Why LATER?</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.8;">The only coin that gets more valuable the longer you wait to buy it... probably</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛋️</div>
+                    <h3>Couch-Friendly Trading</h3>
+                    <p>Trade from your couch, bed, or that one spot on the floor you've claimed as yours. Maximum comfort, minimum effort.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Tomorrow's Problem</h3>
+                    <p>Why stress about today's prices when tomorrow's you can handle it? Let future you make all the tough decisions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☕</div>
+                    <h3>Coffee Break Economics</h3>
+                    <p>The perfect coin for those 15-minute coffee breaks that somehow turn into 2-hour deep dives into crypto Twitter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tokenomics" id="tokenomics">
+        <div class="container">
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">Tokenomics (We'll Figure This Out Later)</h2>
+            
+            <div class="tokenomics-grid">
+                <div class="tokenomics-item">
+                    <h3>Total Supply</h3>
+                    <p style="font-size: 1.5rem; color: #FFD700;">∞ LATER</p>
+                    <small>We'll mint more when we feel like it</small>
+                </div>
+                <div class="tokenomics-item">
+                    <h3>Community</h3>
+                    <p style="font-size: 1.5rem; color: #4ECDC4;">60%</p>
+                    <small>For the procrastinators</small>
+                </div>
+                <div class="tokenomics-item">
+                    <h3>Dev Team</h3>
+                    <p style="font-size: 1.5rem; color: #FF6B6B;">20%</p>
+                    <small>Locked until we remember the password</small>
+                </div>
+                <div class="tokenomics-item">
+                    <h3>Marketing</h3>
+                    <p style="font-size: 1.5rem; color: #A8E6CF;">20%</p>
+                    <small>We'll start marketing... eventually</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="marketing-diary" id="diary">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 20px;">📔 Marketing Diary</h2>
+            <p style="text-align: center; font-size: 1.2rem; opacity: 0.8; margin-bottom: 40px;">Live updates from our incredibly lazy marketing journey</p>
+            
+            <div class="diary-timeline">
+                <div class="diary-entry">
+                    <h3>🤖 This Morning: "AI, Write My Promo"</h3>
+                    <p><strong>What happened:</strong> Was too lazy to write my own coin promotion, so I asked AI to do it. Realized this was PERFECT for a procrastination coin.</p>
+                    <p><strong>Results:</strong> Created the most authentic marketing message ever: "This was written by AI because I was too lazy..."</p>
+                    <p><strong>Lesson:</strong> Sometimes being lazy IS the marketing strategy.</p>
+                </div>
+                
+                <div class="diary-entry">
+                    <h3>🎮 Afternoon: "Twitch Spam Adventure"</h3>
+                    <p><strong>What happened:</strong> Spammed Twitch chats with LATER coin messages. Got completely ignored.</p>
+                    <p><strong>Results:</strong> Zero engagement, but very fitting for a procrastination coin.</p>
+                    <p><strong>Thoughts:</strong> Maybe getting ignored is the real success here? 🤔</p>
+                </div>
+                
+                <div class="diary-entry">
+                    <h3>📱 Earlier Today: "TikTok DM Hustle"</h3>
+                    <p><strong>What happened:</strong> Sent messages to crypto TikTokers. Now waiting for responses...</p>
+                    <p><strong>Results:</strong> TBD (probably tomorrow)</p>
+                    <p><strong>Current mood:</strong> Optimistically procrastinating 😴</p>
+                </div>
+                
+                <div class="diary-entry">
+                    <h3>💡 Just Now: "The Meta Moment"</h3>
+                    <p><strong>What happened:</strong> Realized we should document this whole chaotic journey on the website itself.</p>
+                    <p><strong>Results:</strong> This diary section was born!</p>
+                    <p><strong>Genius level:</strong> Accidentally turned lazy marketing into authentic content marketing 🧠</p>
+                </div>
+                
+                <div class="diary-entry ongoing">
+                    <h3>⏳ Right Now: "Still Procrastinating..."</h3>
+                    <p><strong>Status:</strong> Waiting for TikTok responses, considering Telegram groups, definitely putting off "real" marketing</p>
+                    <p><strong>Next steps:</strong> Maybe try Reddit? Or just wait and see what happens? 🤷</p>
+                    <p><strong>Today's achievement:</strong> Perfectly captured the LATER coin energy in one chaotic day</p>
+                    <p><em style="opacity: 0.7; font-size: 0.9rem;">*This diary updates whenever we remember to update it... so probably not that often 😅</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 20px;">Roadmap (Subject to Postponement)</h2>
+            
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <h3>Q4 2024 - Phase 1: "Getting Started"</h3>
+                    <p>✅ Create the coin idea<br>
+                    ✅ Make this website<br>
+                    ⏳ Actually launch the token (still thinking about it)</p>
+                </div>
+                
+                <div class="roadmap-item">
+                    <h3>Q1 2025 - Phase 2: "Maybe Tomorrow"</h3>
+                    <p>📝 Community building (after we finish this Netflix series)<br>
+                    📝 Social media presence (once we figure out TikTok)<br>
+                    📝 First exchange listing (when we get around to it)</p>
+                </div>
+                
+                <div class="roadmap-item">
+                    <h3>Q2 2025 - Phase 3: "Eventually"</h3>
+                    <p>📝 Mobile app (basic features)<br>
+                    📝 Procrastination tracker integration<br>
+                    📝 "I'll do it later" smart contracts</p>
+                </div>
+                
+                <div class="roadmap-item">
+                    <h3>TBD - Phase 4: "Someday"</h3>
+                    <p>📝 World domination<br>
+                    📝 Make procrastination officially profitable<br>
+                    📝 Retire to a hammock somewhere nice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3>Join the Procrastination Nation</h3>
+            <p>Follow us on social media... when we remember to post</p>
+            
+            <div class="social-links">
+                <a href="#" onclick="socialProcrastinate('Twitter')">🐦</a>
+                <a href="#" onclick="socialProcrastinate('Telegram')">💬</a>
+                <a href="#" onclick="socialProcrastinate('Discord')">🎮</a>
+                <a href="#" onclick="socialProcrastinate('Reddit')">📱</a>
+            </div>
+            
+            <p style="margin-top: 30px; opacity: 0.7;">
+                © 2024 Procrastination Coin. We'll add proper legal stuff later.<br>
+                This is not financial advice. Actually, don't take any advice from procrastinators.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let counter = 0;
+        
+        function updateCounter() {
+            counter++;
+            document.getElementById('counter').textContent = counter;
+        }
+        
+        setInterval(updateCounter, 3000);
+        
+        function procrastinate() {
+            const responses = [
+                "Maybe after lunch?",
+                "Let me think about it...",
+                "I'll check my calendar and get back to you",
+                "Sounds great! I'll do it tomorrow",
+                "After I finish this one thing...",
+                "Perfect timing! Right after my nap",
+                "I'm definitely going to do this... later"
+            ];
+            
+            alert(responses[Math.floor(Math.random() * responses.length)]);
+        }
+        
+        function socialProcrastinate(platform) {
+            alert(`I'll definitely follow on ${platform}... right after I finish scrolling through my current feed!`);
+        }
+        
+        // Lazy loading simulation
+        window.addEventListener('scroll', () => {
+            if (Math.random() < 0.01) {
+                updateCounter();
+            }
+        });
+        
+        // Add some interactive elements
+        document.querySelectorAll('.feature-card, .tokenomics-item, .roadmap-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                if (Math.random() < 0.3) {
+                    updateCounter();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
