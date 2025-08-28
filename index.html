@@ -541,7 +541,7 @@
         setInterval(updateCounter, 3000);
         
         function procrastinate() {
-            const responses = [
+            const procrastinationResponses = [
                 "Maybe after lunch?",
                 "Let me think about it...",
                 "I'll check my calendar and get back to you",
@@ -551,7 +551,24 @@
                 "I'm definitely going to do this... later"
             ];
             
-            alert(responses[Math.floor(Math.random() * responses.length)]);
+            const randomResponse = procrastinationResponses[Math.floor(Math.random() * procrastinationResponses.length)];
+            
+            // First show the procrastination response
+            const actuallyBuy = confirm(
+                randomResponse + "\n\n" +
+                "Wait... are you ACTUALLY ready to buy LATER coin right now?\n\n" +
+                "Click 'OK' if you're ready to stop procrastinating and buy now!\n" +
+                "Click 'Cancel' if you want to keep procrastinating (very on-brand) 😴"
+            );
+            
+            if (actuallyBuy) {
+                // They actually want to buy!
+                alert("Wow! Someone's actually ready to buy instead of procrastinating! 🎉\n\nTaking you to pump.fun now...");
+                window.open('https://pump.fun/coin/3E27Fb5agVZSwFBNvJjQWgXt7GwFLLjm6PQrxt6npump', '_blank');
+            } else {
+                // They chose to keep procrastinating
+                alert("Perfect! Procrastinating is exactly what LATER coin is about. You're doing great! 👌\n\nSee you tomorrow... maybe! 😄");
+            }
         }
         
         function socialProcrastinate(platform) {
